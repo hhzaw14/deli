@@ -1,4 +1,6 @@
 <x-frontend>
+
+	<div class="AllMenu">
 	<section class="hero pb-3 bg-cover bg-center d-flex align-items-center" style="background: url(Frontend/img/banner.jpg)">
           <div class="container py-5">
             <div class="row px-4 px-lg-5">
@@ -9,26 +11,31 @@
             </div>
           </div>
     </section>
+	</div>
+
 
 	<section class="pt-5">
-	  <header class="text-center">
+	  <header class="text-center AllMenu">
 	    <p class="small text-muted small text-uppercase mb-1">Carefully created collections</p>
 	    <h2 class="h5 text-uppercase mb-4">Featured Restaurants</h2>
 	  </header>
 
 	  
 	  <div class="container">
-	  	<div class="row">
-	  	@foreach($restaurants as $restaurant)
-	    <div class="col-md-4 mb-4 mb-md-0">
-	      <a class="category-item mb-4" href="{{ route('detail',$restaurant->id)}}">
+	  	<div class="row AllMenu">
+		  	@foreach($restaurants as $restaurant)
+		    <div class="col-md-3 mb-4 mb-md-0">
+		      <a class="category-item mb-4" href="{{ route('detail',$restaurant->id)}}">
 
-	        <img class="img-fluid" src="{{$restaurant->logo}}" alt="" style="width: 100%; height: 250px;">
-	        <strong class="category-item-title">{{ $restaurant->name }}</strong>
-	      </a>
-	    </div>
-	  @endforeach
-	  </div>
+		        <img class="img-fluid" src="{{$restaurant->logo}}" alt="" style="width: 100%; height: 250px;">
+		        <strong class="category-item-title">{{ $restaurant->name }}</strong>
+		      </a>
+		    </div>
+		  	@endforeach
+	  	</div>
+	  	<div class="row SearchMenu">
+
+        </div>
 	  </div>
 	</section>
 </x-frontend>

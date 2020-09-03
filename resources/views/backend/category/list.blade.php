@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive table--no-card m-b-30">
-                                <table class="table" id="dataTable">
+                                <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>Order ID</th>

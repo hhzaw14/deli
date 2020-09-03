@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Menu;
-use App\Township;
-use Carbon\Carbon;
-use App\Order;
-use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 class FrontendController extends Controller
 {
     public function index(){
@@ -19,7 +15,8 @@ class FrontendController extends Controller
 
     public function resdetail($id)
     {
-    	$restaurant = Restaurant::find($id);
+    	$restaurant = Restaurant::where('id',$id)->first();
+       // dd($restaurant);
     	$menus = Menu::where('restaurant_id', $id )->get();
     	return view('frontend.restdetail', compact('menus', 'restaurant'));
     }
@@ -42,59 +39,21 @@ class FrontendController extends Controller
         return $data;
     }
 
-    public function cart(){
-        return view('frontend.cart');
+    public function searchTownship($id){
+        $restaurants = Restaurant::where('township_id', $id)->get();
+        return view('frontend.township', compact('restaurants'));
     }
 
-    public function order(Request $request){
-        $carts=json_decode($request->data);
 
-
-        $address=$request->address;
-        $townshipid=$request->townshipid;
-        $orderdate=Carbon::now();
-        $voucherno=uniqid();
-        $status='order';
-
-        $total=0;
-        foreach($carts as $value){
-            $total+=$value->price*$value->qty;
-        }
-
-        // dd($total);
-        $auth=Auth::user();
-        $userid=$auth->id;
-
-        $townshipid=Township::find($townshipid);
-        $deli_charges=$townshipid->charges;
-        //dd($deli_charges);
-
-        $order=new Order();
-        $order->orderdate=$orderdate;
-        $order->voucherno=$voucherno;
-        $order->address=$address;
-        $order->status=$status;
-        $order->total=$total;
-        $order->user_id=$userid;
-        $order->deli_charges=$deli_charges;
-        $order->save();
-
-        foreach($carts as $value){
-            $menuid=$value->id;
-            $qty=$value->qty;
-            $price=$value->price;
-            $subtotal=$qty*$price;
-            
-
-        $order->menus()->attach($menuid,['qty'=>$qty, 'price'=>$price, 'subtotal'=>$subtotal]);
-        }
-
-         return response()->json([
-            'status'=>'order successfully created!'
-        ]);
-
-
-
-
+    public function searchItem(Request $request){
+        $keyword = $request->sItem;
+        //dd($keyword);
+        $searchitem = DB::table('restaurants')
+            ->join('menus', 'restaurants.id', '=', 'menus.restaurant_id')
+            ->select('restaurants.*','menus.name as menuname')
+            ->where('menus.name', $keyword)
+            ->get();
+        // dd($searchitem);
+        return $searchitem;
     }
 }

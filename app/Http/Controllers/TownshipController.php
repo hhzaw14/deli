@@ -35,10 +35,7 @@ class TownshipController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
-        
-
+    {
         $name = $request->name;
         $charges = $request->charges;
 

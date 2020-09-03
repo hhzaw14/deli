@@ -15,8 +15,8 @@
               <div class="col-lg-6 text-lg-right">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb justify-content-lg-end mb-0 px-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Item Detail </li>
+                    <li class="breadcrumb-item"><a href="{{ route('index')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Menu Detail </li>
                   </ol>
                 </nav>
               </div>

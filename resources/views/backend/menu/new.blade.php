@@ -58,7 +58,7 @@
 			                                    Restaurant
 			                                </div>
 			                                <div class="col-12 col-md-9">
-			                                    <select name="restaurant_id" class="form-control col-4">
+			                                    <select name="restaurant_id" class="form-control col-4 defineRes">
 			                                    	<option> Choose Restaurant </option>
 			                                    	@foreach($restaurants as $restaurant)
 			                                    		<option value="{{ $restaurant->id}}"> {{ $restaurant->name }} </option>

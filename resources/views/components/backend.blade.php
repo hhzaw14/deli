@@ -47,10 +47,7 @@
        <link rel="stylesheet" type="text/css" 
        href="{{asset('multipleimageupload/image-uploader.min.css')}}">
 
-     <!-- Custom styles for this page -->
-  <link href="{{asset('datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
-</head>s
+</head>
 
 <body class="animsition">
     <div class="page-wrapper">
@@ -79,7 +76,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('orderlist')}}">
+                            <a href="map.html">
                                 <i class="fas fa-desktop"></i>Order</a>
                         </li>
                         <li>
@@ -129,7 +126,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('orderlist')}}">
+                            <a href="map.html">
                                 <i class="fas fa-desktop"></i>Order</a>
                         </li>
                         <li>
@@ -270,12 +267,6 @@
      <!-- multiple Image Upload & Preview JS -->
 
         <script src="{{asset('multipleimageupload/image-uploader.min.js')}}"></script>
-    {{-- Datatables --}}
-    <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-     <!-- Page level custom scripts -->
-  <script src="{{asset('Backend/js/demo/datatables-demo.js')}}"></script>
     @yield("script_content");
 
 </body>

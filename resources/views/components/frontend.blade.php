@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>foodorder.com</title>
+    <title>Boutique | Ecommerce bootstrap template</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
@@ -38,53 +38,41 @@
       <!-- navbar-->
       <header class="header bg-white">
         <div class="container px-0 px-lg-3">
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span class="font-weight-bold text-uppercase text-dark">Food Order</span></a>
+          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="{{route('index')}}"><span class="font-weight-bold text-uppercase text-dark">Food Order</span></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.html">Home</a>
+                  <!-- Link--><a class="nav-link active" href="{{ route('index')}}">Home</a>
+                </li>
+{{--                 <li class="nav-item">
+                  <a class="nav-link" href="shop.html">Cuisine</a>
                 </li>
                 <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="shop.html">Cuisine</a>
-                </li>
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="detail.html">Product detail</a>
-                </li>
+                  <a class="nav-link" href="detail.html">Product detail</a>
+                </li> --}}
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Township</a>
                   <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
 
                     @foreach($data[0] as $township)
-                      <a class="dropdown-item border-0 transition-link" href="#">{{$township->name}}</a>
+                      <a class="dropdown-item border-0 transition-link" href="{{ route('SearchTownship', $township->id)}}">{{$township->name}}</a>
 
                     @endforeach
                   </div>
                 </li>
+
+                <li class="nav-item">
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+                      aria-label="Search" id="ItemSearch">
+                </li>
               </ul>
+              
               <ul class="navbar-nav ml-auto">               
-                <li class="nav-item"><a class="nav-link" href="{{route('cart')}}"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(<span class="shoppingcartNoti"></span>)</small></a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
                <!--  <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart mr-1"></i><small class="text-gray"> (0)</small></a></li> -->
-               @guest
-                <li class="nav-item"><a class="nav-link" href="{{route('login')}}"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('register') }}"> <i class="fas fa-user-alt mr-1 text-gray"></i>Register</a></li>
-              @else
-              <li class="nav-item">
-                <a class="nav-link"> 
-               <span> {{Auth::user()->name}} Account</span></a> </li>                          
-                      <li class="nav-link"><a href="javascript:void(0)" onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();"> Sign Out </a>
-                      <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
-                       @csrf
-                      </form>
-                        </li>
+                <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-user-alt mr-1 text-gray"></i>Register</a></li>
 
-
-                                
-            
-
-
-
-               @endif 
               </ul>
             </div>
           </nav>
@@ -184,7 +172,7 @@
           </div>
         </section>
         <!-- NEWSLETTER-->
-        <section class="py-5">
+{{--         <section class="py-5">
           <div class="container p-0">
             <div class="row">
               <div class="col-lg-6 mb-3 mb-lg-0">
@@ -203,9 +191,9 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> --}}
       </div>
-      <footer class="bg-dark text-white">
+      <footer class="bg-dark text-white mt-5">
         <div class="container py-4">
           <div class="row py-5">
             <div class="col-md-4 mb-3 mb-md-0">
@@ -259,8 +247,6 @@
       <script src="{{asset('Frontend/js/front.js')}}"></script>
 
       <script src="{{asset('FoodOrder.js')}}"></script>
-
-      <script src="{{asset('shoppingcart.js')}}"></script>
 
       <script>
         // ------------------------------------------------------- //

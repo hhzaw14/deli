@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index');
 
+
 Route::get('/dashboard', 'TownshipController@index')->name('dashboard');
 
 Route::resource('/category', 'CategoryController');
@@ -26,10 +27,6 @@ Route::resource('/cuisine', 'CuisineController');
 Route::resource('/restaurant', 'RestaurantController');
 
 Route::resource('/menu', 'MenuController');
-
-Route::get('/orderlist','OrderlistController@index')->name('orderlist');
-
-Route::get('/orderdetail/{id}','OrderlistController@orderdetail')->name('orderdetail');
 
 // Route::get('/hello', 'TownshipController@index')->name('hello');
 Auth::routes();
@@ -44,6 +41,6 @@ Route::get('/restaurantdetail/{id}', 'FrontendController@resdetail')->name('deta
 
 Route::post('/searchPost', 'FrontendController@search')->name('searchPost');
 
-Route::get('/cart','FrontendController@cart')->name('cart');
+Route::post('/searchItem', 'FrontendController@searchItem')->name('searchItem');
 
-Route::post('/order','FrontendController@order')->name('order');
+Route::get('/SearchTownship/{id}', 'FrontendController@searchTownship')->name('SearchTownship');

@@ -121,7 +121,6 @@ class MenuController extends Controller
         $restaurant_id = $request->restaurant_id;
         $category_id = $request->category_id;
 
-        // dd($request->oldPhoto);
 
          if ($request->hasfile('images')) 
             {
@@ -141,7 +140,7 @@ class MenuController extends Controller
                     }
                 }
             }else{
-                $data= json_decode($request->oldPhoto);
+                $data = json_decode($request->oldPhoto);
             }
 
         $menu=Menu::find($id);
